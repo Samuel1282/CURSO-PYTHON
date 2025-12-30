@@ -1,0 +1,36 @@
+import tkinter as tk
+import fnIMC
+#*********FUNCIONES********
+def btnIMC2():
+    estaturastr=txtEstatura.get()
+    estatura=float(estaturastr)
+    pesostr=txtPeso.get()
+    peso=float(pesostr)
+    imc=fnIMC.calcularIMC(peso, estatura)
+    lblIMC.config(text=f"su IMC es {imc}")
+    resultado=fnIMC.interpretarIMC(imc)
+    lblInterpretacion.config(text=f"RESULTADO: {resultado}")
+
+#*********PARTE VISUAL*****
+ventana=tk.Tk()
+ventana.geometry("400x400")
+ventana.title("INDICE DE MASA CORPORAL")
+lblIngresePeso=tk.Label(text="Ingrese su peso en kilos")
+lblIngresePeso.pack()
+txtPeso=tk.Entry()
+txtPeso.pack()
+lblErrorPeso=tk.Label(text="",fg="red")
+lblErrorPeso.pack()
+lblIngreseEstatura=tk.Label(text="Ingrese su estatura en centimetros")
+lblIngreseEstatura.pack()
+txtEstatura=tk.Entry()
+txtEstatura.pack()
+lblErrorEstatura=tk.Label(text="",fg="red")
+lblErrorEstatura.pack()
+btnIMC=tk.Button(text="CALCULAR IMC", command=btnIMC2)
+btnIMC.pack()
+lblIMC=tk.Label(text="Su IMC es:",fg="blue")
+lblIMC.pack()
+lblInterpretacion=tk.Label(text="",fg="blue")
+lblInterpretacion.pack()
+ventana.mainloop()
